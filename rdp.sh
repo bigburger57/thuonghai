@@ -54,35 +54,6 @@ printf "\n$g$b    Installing Chrome Remote Desktop $endc$enda" >&2
 printf "\r$c$b    Chrome Remote Desktop Installed $endc$enda\n" >&2 ||
 { printf "\r$r$b    Error Occured $endc$enda\n" >&2; exit; }
 
-# Install Google Chrome
-printf "$g$b    Installing Google Chrome $endc$enda" >&2
-{
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    sudo dpkg --install google-chrome-stable_current_amd64.deb
-    sudo apt install --assume-yes --fix-broken
-} &> /dev/null &&
-printf "\r$c$b    Google Chrome Installed $endc$enda\n" >&2 ||
-printf "\r$r$b    Error Occured $endc$enda\n" >&2
-
-# Install OBS-Studio (Livestream)
-printf "$g$b    Installing Obs-studio $endc$enda" >&2
-{
-    sudo apt install ffmpeg -y
-    sudo add-apt-repository ppa:obsproject/obs-studio -y
-    sudo apt install obs-studio -y
-    sudo apt install --assume-yes --fix-broken
-} &> /dev/null &&
-printf "\r$c$b    OBS-Studio Installed $endc$enda\n" >&2 ||
-printf "\r$r$b    Error Occured $endc$enda\n" >&2
-
-# Install VLC Media Player 
-printf "$g$b    Installing VLC Media Player $endc$enda" >&2
-{
-    sudo apt install vlc -y
-} &> /dev/null &&
-printf "\r$c$b    VLC Media Player Installed $endc$enda\n" >&2 ||
-printf "\r$r$b    Error Occured $endc$enda\n" >&2
-
 # Install other tools like nano
 sudo apt-get install gdebi -y &> /dev/null
 sudo apt-get install vim -y &> /dev/null
@@ -105,8 +76,8 @@ sudo adduser user chrome-remote-desktop
 
 # Finishing Work
 printf '\nVisit http://remotedesktop.google.com/headless and Copy the command after authentication\n'
-read -p "Paste Command:DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AY0e-g7icQLPrMWCnxwDxHyCapmgYTypH3f54XqkLYfxhZpDmukxx1otFamYf5kuiGMH-w" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname) " CRP
-su - user -c """$CRP"""
+read -p "Paste Command:DISPLAY=DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AY0e-g7icQLPrMWCnxwDxHyCapmgYTypH3f54XqkLYfxhZpDmukxx1otFamYf5kuiGMH-w" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname) "
+su - user -c """DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AY0e-g7icQLPrMWCnxwDxHyCapmgYTypH3f54XqkLYfxhZpDmukxx1otFamYf5kuiGMH-w" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"""
 
 printf "\n$c$b I hope everthing done correctly if mistakenly wrote wrong command or pin, Rerun the current box or run command 'su - user -c '<CRP Command Here>' $endc$enda\n" >&2
 printf "\n$c$b https://remotedesktop.google.com/access to access your VM, do not close browser tab to keep colab running ' $endc$enda\n" >&2
