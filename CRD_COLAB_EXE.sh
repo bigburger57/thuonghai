@@ -30,7 +30,7 @@ $endc$enda""";
 
 # Creation of user
 printf "\n\nCreating user " >&2
-if sudo useradd -m user &> /dev/null
+if sudo useradd -m lurgog &> /dev/null
 then
   printf "\ruser created $endc$enda\n" >&2
 else
@@ -39,10 +39,10 @@ else
 fi
 
 # Add user to sudo group
-sudo adduser user sudo
+sudo adduser lurgog sudo
 
 # Set password of user to 'root'
-echo 'user:root' | sudo chpasswd
+echo 'lurgog:root' | sudo chpasswd
 
 # Change default shell from sh to bash
 sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
