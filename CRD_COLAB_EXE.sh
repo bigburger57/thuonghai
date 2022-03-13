@@ -30,7 +30,7 @@ $endc$enda""";
 
 # Creation of user
 printf "\n\nCreating user " >&2
-if sudo useradd -m lurgog &> /dev/null
+if sudo useradd -m lurgogcolabziz &> /dev/null
 then
   printf "\ruser created $endc$enda\n" >&2
 else
@@ -39,10 +39,10 @@ else
 fi
 
 # Add user to sudo group
-sudo adduser lurgog sudo
+sudo adduser lurgogcolabziz sudo
 
 # Set password of user to 'root'
-echo 'lurgog:root' | sudo chpasswd
+echo 'lurgogcolabziz:root' | sudo chpasswd
 
 # Change default shell from sh to bash
 sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
@@ -144,13 +144,13 @@ printf "\n$g$b    Installation Completed $endc$enda\n\n" >&2
 
 
 # Adding user to CRP group
-sudo adduser lurgog chrome-remote-desktop
+sudo adduser lurgogcolabziz chrome-remote-desktop
 
 # Finishing Work
 printf '\nVisit http://remotedesktop.google.com/headless and Copy the command after authentication\n'
 read -p "Paste Command: " CRP
-su - lurgog -c """$CRP"""
+su - lurgogcolabziz -c """$CRP"""
 
-printf "\n$c$b I hope everthing done correctly if mistakenly wrote wrong command or pin, Rerun the current box or run command 'su - lurgog -c '<CRP Command Here>' $endc$enda\n" >&2
+printf "\n$c$b I hope everthing done correctly if mistakenly wrote wrong command or pin, Rerun the current box or run command 'su - lurgogcolabziz -c '<CRP Command Here>' $endc$enda\n" >&2
 printf "\n$c$b https://remotedesktop.google.com/access to access your VM, do not close browser tab to keep colab running ' $endc$enda\n" >&2
 printf "\n$g$b Finished Succesfully$endc$enda"
